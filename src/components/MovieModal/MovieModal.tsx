@@ -37,7 +37,11 @@ export const MovieModal = ({ movie, onClose }: MovieModalProps) => {
         </button>
         <img
           className={styles.backdropImage}
-          src={`https://tmdb.org{movie.backdrop_path}`}
+          src={
+            movie.backdrop_path
+              ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
+              : 'https://via.placeholder.com/500x281'
+          }
           alt={movie.title}
         />
         <div className={styles.content}>
