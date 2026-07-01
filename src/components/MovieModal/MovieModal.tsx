@@ -39,13 +39,24 @@ export const MovieModal = ({ movie, onClose }: MovieModalProps) => {
           className={styles.backdropImage}
           src={
             movie.backdrop_path
-              ? `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
-              : 'https://via.placeholder.com/500x281'
+              ? `https://tmdb.org{movie.backdrop_path}`
+              : 'https://placeholder.com'
           }
           alt={movie.title}
         />
         <div className={styles.content}>
           <h2 className={styles.title}>{movie.title}</h2>
+
+          <div className={styles.metaInfo}>
+            <p className={styles.rating}>
+              <strong>Рейтинг:</strong>{' '}
+              {movie.vote_average ? movie.vote_average.toFixed(1) : 'Н/Д'} ⭐
+            </p>
+            <p className={styles.releaseDate}>
+              <strong>Дата релізу:</strong> {movie.release_date || 'Невідомо'}
+            </p>
+          </div>
+
           <p className={styles.overview}>{movie.overview}</p>
         </div>
       </div>
